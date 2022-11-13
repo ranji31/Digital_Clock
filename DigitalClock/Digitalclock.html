@@ -1,0 +1,72 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="UTF-8" lang="en">
+<meta name="description" content="DigitalClock">
+<meta name="Keywords" content="HTML,CSS,JavaScript">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<style>
+body{
+	background-color:black;
+}
+.DigitalClock{
+	margin:50px 400px ;
+	font-size:100px;
+	font-family:tahoma,sans-serif;
+	color:white;
+	height:auto;
+	width:250px;
+	
+
+}
+#Clock-Content{
+	height:400px;
+	width:550px;
+	border:1px solid white;
+	border-radius:15px;
+}
+
+</style>
+</head>
+<body>
+<div class="DigitalClock" align="center">&nbsp;
+<div id="Clock-Content" align="center" >&nbsp;</div>
+
+</div>
+<!--hidden a inspect button-->
+<script>
+	document.addEventListener("contextmenu" , (e) => {
+	 e.preventDefault();
+	}, false);
+
+</script>
+ <script>
+							
+                            show_datetime();
+                            setInterval("show_datetime()", 1000);
+                            function show_datetime() {
+                                var curtime = new Date();
+								var curday = curtime.getDay();
+                                var curhour = curtime.getHours();
+                                var curmin = curtime.getMinutes();
+                                var cursec = curtime.getSeconds();
+								var month = "";
+								var day = "";
+                                var time = "";
+                                if (curhour == 0)
+                                    curhour = 12;
+                                time = (curhour > 12 ? curhour - 12 : curhour) + ":" +
+                                        (curmin < 10 ? "0" : "") + curmin + ":" +
+                                        (cursec < 10 ? "0" : "") + cursec + " " + "<br>" +
+                                        (curhour > 12 ? "PM" : "AM");
+                                try {
+                                    document.getElementById("Clock-Content").innerHTML = curtime.toLocaleDateString() + " <br> " + time;
+									
+                                } catch (e) {
+                                }
+                            }
+                        
+       </script>
+       
+</body>
+</html>
